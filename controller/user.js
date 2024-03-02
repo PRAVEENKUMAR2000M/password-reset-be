@@ -162,6 +162,16 @@ const userController = {
             console.error("Error:", error);
             return response.status(500).json({ error: error.message });
         }
+    },
+
+    getUser: async (request, response) => {
+        const id = request.userId
+        // console.log(id)
+        const user = await User.findById(id)
+        if (!user) {
+            return response.status(404).json({message:"user not found"})
+        }
+        response.status(200).json({message:"user retrived", user})
     }
 }
 

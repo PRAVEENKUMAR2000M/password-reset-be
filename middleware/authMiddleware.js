@@ -22,7 +22,7 @@ const authMiddleware = {
         try {
             const decodedToken = jwt.verify(getTokenFrom(request), config.JWT_SECRET);
             request.userId = decodedToken.id;
-            console.log(request.userId);
+            // console.log(request.userId);
             next();
         } catch (error) {
             return response.status(401).json({ error: 'Invalid token' });
